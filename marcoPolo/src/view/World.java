@@ -90,19 +90,33 @@ public class World extends PApplet
 	
 	public void chase()
 	{
-		
+		System.out.println(marco.getRand());
 		for(int i = 0; i < poloList.size(); i++)
 		{
 			Polo actual = poloList.get(i);
 			
-			if((marco.getRand() == 3 || marco.getRand() == 2) && (marco.getX1() == actual.getX1()))
+			if((marco.getRand() == 3 || marco.getRand() == 2) && (marco.getY1() == actual.getY1()))
 			{
-				marco.setRand(0);
+				if(marco.getX1() < actual.getX1())
+				{
+					marco.setRand(0);
+				}
+				else if(marco.getX1() > actual.getX1())
+				{
+					marco.setRand(1);
+				}
 			}
 			
-			if((marco.getRand() == 0 || marco.getRand() == 1) && (marco.getY1() == actual.getY1()))
+			else if((marco.getRand() == 0 || marco.getRand() == 1) && (marco.getX1() == actual.getX1()))
 			{
-				marco.setRand(3);
+				if(marco.getY1() < actual.getY1())
+				{
+					marco.setRand(2);
+				}
+				else if(marco.getY1() > actual.getY1())
+				{
+					marco.setRand(3);
+				}
 			}
 		}
 	}
